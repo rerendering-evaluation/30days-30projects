@@ -1,8 +1,7 @@
+import { memo } from "react";
 import logo from './logo.svg';
 import './App.css';
-
-function App() {
-
+const App = memo(function App() {
   // classList.toggle change the className to the argument string
   // so in the first one we change the classname of the
   const handleClick = e => {
@@ -10,9 +9,7 @@ function App() {
     document.querySelector(".menu").classList.toggle("show");
     document.querySelector(".navbar").classList.toggle("open");
   };
-
-  return (
-    <>
+  return <>
     <div className="navbar">
       <div className="container" onClick={handleClick}>
         <div className="hamburger1"></div>
@@ -28,8 +25,6 @@ function App() {
         </div>
       </div>
     </div>
-    </>
-  );
-}
-
+    </>;
+});
 export default App;

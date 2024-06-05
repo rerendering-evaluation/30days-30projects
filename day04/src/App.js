@@ -1,12 +1,11 @@
+import { memo } from "react";
 import './App.css';
 import { useState, useEffect } from 'react';
-
-function App() {
+const App = memo(function App() {
   let [days, setDays] = useState(0);
   let [hours, setHours] = useState(0);
   let [minutes, setMinutess] = useState(0);
   let [seconds, setSeconds] = useState(0);
-
   useEffect(() => {
     // effect function
     let interval = setInterval(() => {
@@ -25,17 +24,12 @@ function App() {
       clearInterval(interval);
     };
   });
-
   if (days <= -1) {
-    return (
-      <div className="new-year">
+    return <div className="new-year">
         <h1>Happy New Year!!!</h1>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="container">
+  return <div className="container">
       <h1>New Year Countdown</h1>
       <div className="countdown">
         <div>
@@ -55,8 +49,6 @@ function App() {
           <h6>Seconds</h6>
         </div>
       </div>
-    </div>
-  );
-}
-
+    </div>;
+});
 export default App;
