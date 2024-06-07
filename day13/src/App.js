@@ -1,45 +1,36 @@
+import { memo } from "react";
 import './App.css';
-import { useEffect, useState } from 'react'
-
-function App() {
-  const [sentence, setSentence] = useState('Loading...')
-
+import { useEffect, useState } from 'react';
+const App = memo(function App() {
+  const [sentence, setSentence] = useState('Loading...');
   useEffect(() => {
-    const string = 'Hello World!'
-    let idx = 0
+    const string = 'Hello World!';
+    let idx = 0;
     const intervalId = setInterval(() => {
       setSentence(string.slice(0, idx));
-      if (idx > string.length) { 
+      if (idx > string.length) {
         idx = 0;
-        setSentence('') 
+        setSentence('');
       } else {
         idx++;
       }
-    }, 200)
+    }, 200);
     return () => clearInterval(intervalId);
-  }, [])
-
+  }, []);
   function setLight() {
     document.querySelector('body').setAttribute('theme', 'light');
     localStorage.setItem('prevTheme', 'light');
   }
-
   function setDark() {
     document.querySelector('body').setAttribute('theme', 'dark');
     localStorage.setItem('prevTheme', 'dark');
   }
-
   const changeTheme = e => {
-    if (e.target.checked) setDark();
-    else setLight();
-  }
-
+    if (e.target.checked) setDark();else setLight();
+  };
   const prevTheme = localStorage.getItem('prevTheme');
-
   if (prevTheme === 'dark') setDark();
-
-  return (
-    <>
+  return <>
       <h1>{sentence}</h1>
       <p>This was fun to do</p>
       <div className='theme'>
@@ -48,8 +39,6 @@ function App() {
           <span className='theme-span'></span>
         </label>
       </div>
-    </>
-  );
-}
-
+    </>;
+});
 export default App;

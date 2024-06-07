@@ -1,8 +1,7 @@
+import { memo } from "react";
 import './App.css';
-
-function App() {
-  return (
-    <div className='container'>
+const App = memo(function App() {
+  return <div className='container'>
       
       <div className='left'>
         <h3 className="course">Course</h3>
@@ -21,11 +20,9 @@ function App() {
 
         
         <h1>Callbacks & Closures</h1>
-        <button >Continue</button>
+        <button>Continue</button>
 
       </div>
-    </div>
-  );
-}
-
+    </div>;
+});
 export default App;

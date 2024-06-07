@@ -1,23 +1,19 @@
+import { memo } from "react";
 import './App.css';
 import { useState } from 'react';
-
-function App() {
-
+const App = memo(function App() {
   const [open, setOpen] = useState(false);
-
   const handleClick = () => {
     setOpen(!open);
   };
-
-  return (
-    <>
+  return <>
       <img src={require('./overbackground.png')} className={open ? "hide" : "overbackground"} />
 
       <header>
-        <img src={require('./logo.png')} className={open ? "hide" : "logo"}/>
+        <img src={require('./logo.png')} className={open ? "hide" : "logo"} />
 
         <div className={open ? "open" : "navbar"}>
-          <div className="container" >
+          <div className="container">
 
             <div className="hamburger" onClick={handleClick}>
               <div className={open ? "change1" : "hamburger1"}></div>
@@ -58,8 +54,6 @@ function App() {
           <img src={require('./instagram.png')} />
         </div>
       </header>
-    </>
-  );
-}
-
+    </>;
+});
 export default App;
