@@ -179,3 +179,7 @@ app.get('/', (req, res) => {
 // Port
 
 app.listen(5000, () => { console.log('listening to port 5000')});
+
+if (typeof window !== 'undefined') {
+  window.globalCount = window.globalCount || 0;
+}
